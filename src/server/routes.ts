@@ -8,9 +8,7 @@ export function registerRoutes(router: Router) {
     });
 
     router.get('/test', async (ctx) => {
-        ctx.throw(400 , 'Bad times!', { data: { whosucks: 'you do!' } });
-        console.log('got here');
-        ctx.body = 'Woo!';
+        ctx.status = 201;
     });
 
 }
