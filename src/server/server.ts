@@ -1,20 +1,17 @@
 import * as Koa from 'koa';
+import * as Router from 'koa-router';
+
 import { config } from './config';
+import { logger } from './logging';
+import { registerRoutes } from './routes';
 
 const app = new Koa();
+const router = new Router();
 
-app.use(async (ctx, next) => {
-  const start = new Date().getMilliseconds();
-  await next();
-  const ms = new Date().getMilliseconds() - start;
-  console.log(`${ctx.method} ${ctx.url} - ${ms}`);
-});
+registerRoutes(router);
 
-// response
-
-app.use((ctx) => {
-  ctx.body = 'Hello World';
-});
+app.use(logger);
+app.use(router.routes());
 
 app.listen(config.port);
 console.log(`Server running at http://localhost:${config.port}`);
