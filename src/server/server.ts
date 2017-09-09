@@ -14,4 +14,4 @@ app.use(logger);
 app.use(router.routes());
 
 app.listen(config.port);
-console.log(`Server running at http://localhost:${config.port}`);
+console.log(`Server running on port ${config.port}`);
