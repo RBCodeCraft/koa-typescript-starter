@@ -1,17 +1,14 @@
 import * as Koa from 'koa';
-import * as Router from 'koa-router';
 
 import { config } from './config';
 import { logger } from './logging';
-import { registerRoutes } from './routes';
+import { routes } from './routes';
 
 const app = new Koa();
-const router = new Router();
-
-registerRoutes(router);
 
 app.use(logger);
-app.use(router.routes());
+app.use(routes);
 
 app.listen(config.port);
+
 console.log(`Server running on port ${config.port}`);
