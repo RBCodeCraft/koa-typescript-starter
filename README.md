@@ -6,6 +6,14 @@ Requirements:
 Features:
  * Watch mode - server auto-restarts when code changes
  * Koa v2 with #beautiful async functions
- * Sensible set of default middleware
 
-// More docs TODO...
+Included middleware:
+ * koa-router
+ * Custom logger with pretty + JSON modes (based on `NODE_ENV`)
+
+## Getting Started
+
+```
+npm i
+npm run watch-server
+```
